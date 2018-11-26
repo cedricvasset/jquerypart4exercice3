@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.2.1.js"></script>
+  <title>exercice3part4 JQ</title>
+</head>
+<body>
+  <form class="inscription" action="index.html" method="post">
+    <p>veuillez entrer vos informations</p>
+    <p>Nom</p>
+    <input id="name" type="text" name="name" placeholder="Nom"/>
+    <p>Prénom</p>
+    <input id="firstname" type="text" name="firstname" placeholder="Prénom"/>
+    <p>Adresse Mail</p>
+    <input id="mail" type="text" name="mail" placeholder="Email"/>
+    <p>Téléphone</p>
+    <input id="phone" type="text" name="phone" placeholder="Téléphone"/>
+  </form>
+  <button id="submit" type="button" name="button">soumettre</button>
+  <script>
+  $(function(){
+    $('#submit').click(function(){
+      var name = $('#name').val();
+      var firstname = $('#firstname').val();
+      var mail = $('#mail').val();
+      var phone = $('#phone').val();
+      var regexmail = /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/;
+      var regextel = /(\+\d+(\s|-))?0\d(\s|-)?(\d{2}(\s|-)?){4}/;//^(06|07)[0-9]{8}$
+      var regexname = /^[a-zA-ZâäçéèêëïöúùüæœÁÀÂÄÇÉÈÊËÏÑÖÜÆŒ-]+$/;
+      if((regexname.test(name)== true)&&(regexname.test(firstname)==true)&&(regexmail.test(mail)==true)&&(regextel.test(phone)==true)){
+        alert ('tous les champs saisis sont valides');
+      }else if(regexname.test(firstname)== false){
+        alert ('le nom n\'est pas un nom valide');
+      }else if(regexname.test(firstname)== false){
+        alert ('le nom n\'est pas un nom valide');
+      }else if(regexmail.test(mail)==false){
+        alert('le mail n\' est pas un mail valide');
+      }else if(regextel.test(phone)==false){
+        alert('le téléphone n\' est pas un téléphone valide');
+      };
+    });
+  });
+  </script>
+</body>
+</html>
